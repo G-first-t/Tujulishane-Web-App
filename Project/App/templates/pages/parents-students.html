@@ -1,0 +1,9 @@
+<h2>STUDENT INFO</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ student_form.as_p }}
+  <h2>PARENT INFO</h2>
+  {{ parent_form.as_p }}
+  <button type="submit">submit</button>
+</form>
+
