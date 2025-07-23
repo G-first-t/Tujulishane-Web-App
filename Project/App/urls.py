@@ -10,6 +10,9 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path("home/",views.home, name ='home' ),
-    path("home/add/",views.add_parents_and_students,name='add')
+    path("home/add/",views.add_parents_and_students,name='add'),
+    path('home/checkin/', views.checkin_view, name='checkin'),
+    path('home/report', views.report_page, name='report'),
+
     
 ]

@@ -1,7 +1,12 @@
-<!Doctype html>
-    <html>
-        <head></head>
-        <body>
-            <h1>hello world</h1>
-        </body>
-    </html>
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Welcome to Tujulishe</h1>
+<p>This app helps busy parents and teachers stay updated about children.</p>
+
+<ul>
+    <li><a href="{% url 'checkin' %}">Check-In</a></li>
+    <li><a href="{% url 'report' %}">Report</a></li>
+</ul>
+<p>add student and parents <span><a href="{% url 'add' %}">ADD</a></span></p>
+{% endblock %}

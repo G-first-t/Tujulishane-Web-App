@@ -7,10 +7,10 @@ class Student(models.Model):
     last_name = models.CharField(max_length=255)
     
     def __str__(self):
-        return f'this is student {self.name},'
+        return f'this is student {self.first_name},'
    
     
-class Parents(models.Model):
+class Parent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     email = models.EmailField(blank=True, null =True)
     phone_number = models.CharField(max_length=12)
@@ -26,15 +26,14 @@ class Issue(models.Model):
     date_of_reporting= models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='images/')
     
-    def ___str__(self):
+    def __str__(self):
         return f"{self.description}"
     
     
-    
-class autoNotifyMe(models.Model):
-    email = models.EmailField()
-    phone_number = models.CharField()
-    
+class ReminderStatus(models.Model):
+    date = models.DateField(auto_now_add=True)
+    confirmed_count = models.IntegerField(default=0)
+    email_count = models.IntegerField(default=0)
     
     
     

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Checkin confirmation</h2>
+    <p>You have checked in {{ confirmed_count }} time{{ confirmed_count|pluralize }} today.</p>
+    {% if confirmed_count >= 2 %}
+        <p>No more reminders will be sent today. Thanks!</p>
+    {% else %}
+        <p>Once you check in 2 times, the reminders will stop.</p>
+    {% endif %}
+    <form method="post">
+    {% csrf_token %}
+    <button type="submit">I’ve Checked In</button>
+</form>
+{% endblock %}
