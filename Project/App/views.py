@@ -8,6 +8,7 @@ from .models import ReminderStatus
 from .models import Parent
 from django.contrib import messages
 from App.tasks import send_remainder_to_check_on_children
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -25,12 +26,12 @@ def sign_up(request):
     return render(request,'registration/register.html',{'form':form})
             
         
-    
+@login_required
 def home(request):
     return render(request, 'home.html')
 
 
-
+@login_required
 def add_parents_and_students(request):
     if request.method=='POST':
         student_form= StudentForm(request.POST)
@@ -60,7 +61,7 @@ def schedule_reminder_task(request):
 
 
     
-    
+@login_required 
 def checkin_view(request):
     today = timezone.localdate()
     status, _ = ReminderStatus.objects.get_or_create(date=today)
@@ -72,7 +73,7 @@ def checkin_view(request):
     return render(request, 'checkin_page.html', {'confirmed_count': status.confirmed_count})
 
 
-
+@login_required
 def report_page(request):
     if request.method == 'POST':
         form = IssueForm(request.POST, request.FILES)

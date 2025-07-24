@@ -24,7 +24,7 @@ class Issue(models.Model):
     student = models.ForeignKey(Student, on_delete= models.CASCADE)
     description = models.TextField()
     date_of_reporting= models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/' ,blank=True, null=True)
     
     def __str__(self):
         return f"{self.description}"

@@ -1,0 +1,157 @@
+Retrieving logs...
+============= i-0b554612955ef2328 ==============
+----------------------------------------
+/var/log/eb-engine.log
+----------------------------------------
+2025/07/24 01:11:29.312187 [INFO] Running command: docker rmi `docker images -aq`
+2025/07/24 01:11:29.358438 [INFO] Error response from daemon: conflict: unable to delete 17e20a0dbadd (cannot be forced) - image is being used by running container 68a4de77b331
+
+2025/07/24 01:11:29.358477 [INFO] Running command: docker images -a
+2025/07/24 01:11:29.388023 [INFO] REPOSITORY    TAG       IMAGE ID       CREATED          SIZE
+current-web   latest    17e20a0dbadd   13 seconds ago   996MB
+
+2025/07/24 01:11:29.388051 [INFO] Pruning build cache ...
+2025/07/24 01:11:29.388064 [INFO] Running command: docker builder prune -f
+2025/07/24 01:11:29.879518 [INFO] ID						RECLAIMABLE	SIZE		LAST ACCESSED
+me6tgzedajzgz0d3a4gyr5tzn*              	true 		759.6MB   	7 seconds ago
+07mexl417cn92o8yslcqd2tlx*              	true 	0B        	7 seconds ago
+68sjuxydqda236afdocw06p6f*              	true 	368B      	7 seconds ago
+Total:	759.6MB
+
+2025/07/24 01:11:29.879549 [INFO] Executing instruction: start X-Ray
+2025/07/24 01:11:29.879556 [INFO] X-Ray is not enabled.
+2025/07/24 01:11:29.879560 [INFO] Executing instruction: configureSqsd
+2025/07/24 01:11:29.880547 [INFO] This is a web server environment instance, skip configure sqsd daemon ...
+2025/07/24 01:11:29.880575 [INFO] Executing instruction: startSqsd
+2025/07/24 01:11:29.880578 [INFO] This is a web server environment instance, skip start sqsd daemon ...
+2025/07/24 01:11:29.880581 [INFO] Executing instruction: Track pids in healthd
+2025/07/24 01:11:29.881352 [INFO] This is an enhanced health env...
+2025/07/24 01:11:29.881395 [INFO] Running command: systemctl show -p ConsistsOf aws-eb.target | cut -d= -f2
+2025/07/24 01:11:29.901477 [INFO] eb-docker-compose-events.service healthd.service eb-docker-compose-log.service cfn-hup.service eb-docker-events.service docker.service
+
+2025/07/24 01:11:29.901517 [INFO] Running command: systemctl show -p ConsistsOf eb-app.target | cut -d= -f2
+2025/07/24 01:11:29.915078 [INFO] 
+
+2025/07/24 01:11:29.917700 [INFO] Executing instruction: RunAppDeployPostDeployHooks
+2025/07/24 01:11:29.917785 [INFO] Executing platform hooks in .platform/hooks/postdeploy/
+2025/07/24 01:11:29.917802 [INFO] The dir .platform/hooks/postdeploy/ does not exist
+2025/07/24 01:11:29.917810 [INFO] Finished running scripts in /var/app/current/.platform/hooks/postdeploy
+2025/07/24 01:11:29.917817 [INFO] Executing cleanup logic
+2025/07/24 01:11:29.927362 [INFO] CommandService Response: {"status":"SUCCESS","api_version":"1.0","results":[{"status":"SUCCESS","msg":"Engine execution has succeeded.","returncode":0,"events":[{"msg":"Instance deployment completed successfully.","timestamp":1753319489917,"severity":"INFO"}]}]}
+
+2025/07/24 01:11:29.928693 [INFO] Platform Engine finished execution on command: app-deploy
+
+2025/07/24 05:59:32.764623 [INFO] Starting...
+2025/07/24 05:59:32.765112 [INFO] Starting EBPlatform-PlatformEngine
+2025/07/24 05:59:32.765169 [INFO] reading event message file
+2025/07/24 05:59:32.775382 [INFO] Engine received EB command cfn-hup-exec
+
+2025/07/24 05:59:32.903582 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:eu-north-1:741448955963:stack/awseb-e-3dmdaf4kmt-stack/7f793390-682a-11f0-8101-0e5efdce5f53 -r AWSEBAutoScalingGroup --region eu-north-1
+2025/07/24 05:59:33.318090 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:eu-north-1:741448955963:stack/awseb-e-3dmdaf4kmt-stack/7f793390-682a-11f0-8101-0e5efdce5f53 -r AWSEBBeanstalkMetadata --region eu-north-1
+2025/07/24 05:59:33.613632 [INFO] checking whether command tail-log is applicable to this instance...
+2025/07/24 05:59:33.613651 [INFO] this command is applicable to the instance, thus instance should execute command
+2025/07/24 05:59:33.613657 [INFO] Engine command: (tail-log)
+
+2025/07/24 05:59:33.614631 [INFO] Executing instruction: GetTailLogs
+2025/07/24 05:59:33.614638 [INFO] Tail Logs...
+2025/07/24 05:59:33.620804 [INFO] Running command: tail -n 100 /var/log/docker-events.log
+2025/07/24 05:59:33.625302 [INFO] Running command: tail -n 100 /var/log/docker-compose-events.log
+2025/07/24 05:59:33.627695 [INFO] Running command: tail -n 100 /var/log/docker
+2025/07/24 05:59:33.630225 [INFO] Running command: tail -n 100 /var/log/eb-engine.log
+2025/07/24 05:59:33.632504 [INFO] Running command: tail -n 100 /var/log/eb-hooks.log
+2025/07/24 05:59:33.634368 [INFO] Running command: tail -n 100 /var/log/eb-docker/containers/eb-current-app/eb-stdouterr.log
+2025/07/24 05:59:33.728627 [INFO] Executing cleanup logic
+2025/07/24 05:59:33.728824 [INFO] CommandService Response: {"status":"SUCCESS","api_version":"1.0","results":[{"status":"SUCCESS","msg":"Engine execution has succeeded.","returncode":0,"events":[{"msg":"Instance deployment completed successfully.","timestamp":1753336773728,"severity":"INFO"}]}]}
+
+2025/07/24 05:59:33.728926 [INFO] Platform Engine finished execution on command: tail-log
+
+2025/07/24 06:17:29.450918 [INFO] Starting...
+2025/07/24 06:17:29.450976 [INFO] Starting EBPlatform-PlatformEngine
+2025/07/24 06:17:29.451007 [INFO] reading event message file
+2025/07/24 06:17:29.451431 [INFO] Engine received EB command cfn-hup-exec
+
+2025/07/24 06:17:29.520399 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:eu-north-1:741448955963:stack/awseb-e-3dmdaf4kmt-stack/7f793390-682a-11f0-8101-0e5efdce5f53 -r AWSEBAutoScalingGroup --region eu-north-1
+2025/07/24 06:17:29.813640 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:eu-north-1:741448955963:stack/awseb-e-3dmdaf4kmt-stack/7f793390-682a-11f0-8101-0e5efdce5f53 -r AWSEBBeanstalkMetadata --region eu-north-1
+2025/07/24 06:17:30.106012 [INFO] checking whether command tail-log is applicable to this instance...
+2025/07/24 06:17:30.106023 [INFO] this command is applicable to the instance, thus instance should execute command
+2025/07/24 06:17:30.106026 [INFO] Engine command: (tail-log)
+
+2025/07/24 06:17:30.106076 [INFO] Executing instruction: GetTailLogs
+2025/07/24 06:17:30.106079 [INFO] Tail Logs...
+2025/07/24 06:17:30.106520 [INFO] Running command: tail -n 100 /var/log/eb-engine.log
+2025/07/24 06:17:30.108618 [INFO] Running command: tail -n 100 /var/log/eb-hooks.log
+2025/07/24 06:17:30.110534 [INFO] Running command: tail -n 100 /var/log/eb-docker/containers/eb-current-app/eb-stdouterr.log
+2025/07/24 06:17:30.112642 [INFO] Running command: tail -n 100 /var/log/docker-events.log
+2025/07/24 06:17:30.114402 [INFO] Running command: tail -n 100 /var/log/docker-compose-events.log
+2025/07/24 06:17:30.116260 [INFO] Running command: tail -n 100 /var/log/docker
+2025/07/24 06:17:30.181347 [INFO] Executing cleanup logic
+2025/07/24 06:17:30.181418 [INFO] CommandService Response: {"status":"SUCCESS","api_version":"1.0","results":[{"status":"SUCCESS","msg":"Engine execution has succeeded.","returncode":0,"events":[{"msg":"Instance deployment completed successfully.","timestamp":1753337850181,"severity":"INFO"}]}]}
+
+2025/07/24 06:17:30.181432 [INFO] Platform Engine finished execution on command: tail-log
+
+2025/07/24 06:24:14.713169 [INFO] Starting...
+2025/07/24 06:24:14.713227 [INFO] Starting EBPlatform-PlatformEngine
+2025/07/24 06:24:14.713268 [INFO] reading event message file
+2025/07/24 06:24:14.713669 [INFO] Engine received EB command cfn-hup-exec
+
+2025/07/24 06:24:14.788883 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:eu-north-1:741448955963:stack/awseb-e-3dmdaf4kmt-stack/7f793390-682a-11f0-8101-0e5efdce5f53 -r AWSEBAutoScalingGroup --region eu-north-1
+2025/07/24 06:24:15.084581 [INFO] Running command: /opt/aws/bin/cfn-get-metadata -s arn:aws:cloudformation:eu-north-1:741448955963:stack/awseb-e-3dmdaf4kmt-stack/7f793390-682a-11f0-8101-0e5efdce5f53 -r AWSEBBeanstalkMetadata --region eu-north-1
+2025/07/24 06:24:15.369330 [INFO] checking whether command tail-log is applicable to this instance...
+2025/07/24 06:24:15.369344 [INFO] this command is applicable to the instance, thus instance should execute command
+2025/07/24 06:24:15.369347 [INFO] Engine command: (tail-log)
+
+2025/07/24 06:24:15.369400 [INFO] Executing instruction: GetTailLogs
+2025/07/24 06:24:15.369403 [INFO] Tail Logs...
+2025/07/24 06:24:15.369793 [INFO] Running command: tail -n 100 /var/log/eb-engine.log
+
+
+----------------------------------------
+/var/log/eb-hooks.log
+----------------------------------------
+
+
+----------------------------------------
+/var/log/eb-docker/containers/eb-current-app/eb-stdouterr.log
+----------------------------------------
+web-1  | [2025-07-24 01:11:29 +0000] [1] [INFO] Starting gunicorn 23.0.0
+web-1  | [2025-07-24 01:11:29 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+web-1  | [2025-07-24 01:11:29 +0000] [1] [INFO] Using worker: sync
+web-1  | [2025-07-24 01:11:29 +0000] [7] [INFO] Booting worker with pid: 7
+
+
+----------------------------------------
+/var/log/docker-events.log
+----------------------------------------
+2025-07-24T01:10:26.096202592Z container prune  (reclaimed=0)
+2025-07-24T01:11:22.709723945Z image tag sha256:17e20a0dbadd4e9bdf98e8c304b2ac4e2ec043c41c84247fd6eb3eddd9acafc4 (name=staging-web)
+2025-07-24T01:11:26.828933573Z image tag sha256:17e20a0dbadd4e9bdf98e8c304b2ac4e2ec043c41c84247fd6eb3eddd9acafc4 (name=current-web:latest)
+2025-07-24T01:11:26.847183753Z image untag sha256:17e20a0dbadd4e9bdf98e8c304b2ac4e2ec043c41c84247fd6eb3eddd9acafc4 (name=sha256:17e20a0dbadd4e9bdf98e8c304b2ac4e2ec043c41c84247fd6eb3eddd9acafc4)
+2025-07-24T01:11:27.439560441Z network create 22792c160d546e824122c6390724810912357303da48ae5054e008f0d72646a4 (name=current_default, type=bridge)
+2025-07-24T01:11:27.486194468Z container create 68a4de77b331d6790215052e42f9a6720470662a88fc23a0aa77e854714ff9e5 (com.docker.compose.config-hash=476e05dafc75fbc6cd6cfdd27bcbbc94eb4ac7bc808448d61ec1280a96dfa7b7, com.docker.compose.container-number=1, com.docker.compose.depends_on=, com.docker.compose.image=sha256:17e20a0dbadd4e9bdf98e8c304b2ac4e2ec043c41c84247fd6eb3eddd9acafc4, com.docker.compose.oneoff=False, com.docker.compose.project=current, com.docker.compose.project.config_files=/var/app/current/docker-compose.yml, com.docker.compose.project.working_dir=/var/app/current, com.docker.compose.service=web, com.docker.compose.version=2.38.2, image=current-web, name=current-web-1)
+2025-07-24T01:11:27.593021542Z network connect 22792c160d546e824122c6390724810912357303da48ae5054e008f0d72646a4 (container=68a4de77b331d6790215052e42f9a6720470662a88fc23a0aa77e854714ff9e5, name=current_default, type=bridge)
+2025-07-24T01:11:28.204640063Z container start 68a4de77b331d6790215052e42f9a6720470662a88fc23a0aa77e854714ff9e5 (com.docker.compose.config-hash=476e05dafc75fbc6cd6cfdd27bcbbc94eb4ac7bc808448d61ec1280a96dfa7b7, com.docker.compose.container-number=1, com.docker.compose.depends_on=, com.docker.compose.image=sha256:17e20a0dbadd4e9bdf98e8c304b2ac4e2ec043c41c84247fd6eb3eddd9acafc4, com.docker.compose.oneoff=False, com.docker.compose.project=current, com.docker.compose.project.config_files=/var/app/current/docker-compose.yml, com.docker.compose.project.working_dir=/var/app/current, com.docker.compose.service=web, com.docker.compose.version=2.38.2, image=current-web, name=current-web-1)
+
+
+----------------------------------------
+/var/log/docker-compose-events.log
+----------------------------------------
+2025-07-24 01:11:27.486194 container create 68a4de77b331d6790215052e42f9a6720470662a88fc23a0aa77e854714ff9e5 (name=current-web-1, image=current-web)
+
+2025-07-24 01:11:28.204640 container start 68a4de77b331d6790215052e42f9a6720470662a88fc23a0aa77e854714ff9e5 (name=current-web-1, image=current-web)
+
+
+
+----------------------------------------
+/var/log/docker
+----------------------------------------
+Jul 24 01:07:49 ip-172-31-23-172 docker[1834]: time="2025-07-24T01:07:49.817960883Z" level=info msg="Starting up"
+Jul 24 01:07:50 ip-172-31-23-172 docker[1834]: time="2025-07-24T01:07:50.063640505Z" level=info msg="Loading containers: start."
+Jul 24 01:07:50 ip-172-31-23-172 docker[1834]: time="2025-07-24T01:07:50.820617541Z" level=info msg="Loading containers: done."
+Jul 24 01:07:50 ip-172-31-23-172 docker[1834]: time="2025-07-24T01:07:50.837328693Z" level=info msg="Docker daemon" commit=71907ca containerd-snapshotter=false storage-driver=overlay2 version=25.0.8
+Jul 24 01:07:50 ip-172-31-23-172 docker[1834]: time="2025-07-24T01:07:50.838642029Z" level=info msg="Daemon has completed initialization"
+Jul 24 01:07:50 ip-172-31-23-172 docker[1834]: time="2025-07-24T01:07:50.885573821Z" level=info msg="API listen on /run/docker.sock"
+Jul 24 01:10:26 ip-172-31-23-172 docker[1834]: 2025/07/24 01:10:26 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+Jul 24 01:11:27 ip-172-31-23-172 docker[1834]: 2025/07/24 01:11:27 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+Jul 24 01:11:29 ip-172-31-23-172 docker[1834]: 2025/07/24 01:11:29 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+
+
