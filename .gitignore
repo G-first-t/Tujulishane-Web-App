@@ -8,3 +8,5 @@ vrt/
 __pycache__/
 *.log
 logs.txt
+Project/.terraform_backup/
+Project/terraform.tfstate

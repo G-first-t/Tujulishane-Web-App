@@ -8,5 +8,5 @@ services:
       - .:/app
     ports:
       - "8000:8000"
-    environment:
-      - DATABASE_URL=postgres://myuser:%23ipyana1972@mydb.cpqckgq2ijuh.eu-north-1.rds.amazonaws.com:5432/mydb
+    env_file:
+      - .env
